@@ -95,6 +95,7 @@ describe("resolvePluginWebSearchProviders", () => {
       "xai:grok",
       "moonshot:kimi",
       "perplexity:perplexity",
+      "tavily:tavily",
       "firecrawl:firecrawl",
     ]);
     expect(providers.map((provider) => provider.credentialPath)).toEqual([
@@ -129,6 +130,7 @@ describe("resolvePluginWebSearchProviders", () => {
       "xai",
       "moonshot",
       "perplexity",
+      "tavily",
       "firecrawl",
     ]);
   });
