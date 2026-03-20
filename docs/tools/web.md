@@ -100,6 +100,7 @@ See [Perplexity Search API Docs](https://docs.perplexity.ai/guides/search-quicks
 - Grok: `plugins.entries.xai.config.webSearch.apiKey`
 - Kimi: `plugins.entries.moonshot.config.webSearch.apiKey`
 - Perplexity: `plugins.entries.perplexity.config.webSearch.apiKey`
+- Tavily: `plugins.entries.tavily.config.webSearch.apiKey`
 
 All of these fields also support SecretRef objects.
 
@@ -111,6 +112,7 @@ All of these fields also support SecretRef objects.
 - Grok: `XAI_API_KEY`
 - Kimi: `KIMI_API_KEY` or `MOONSHOT_API_KEY`
 - Perplexity: `PERPLEXITY_API_KEY` or `OPENROUTER_API_KEY`
+- Tavily: `TAVILY_API_KEY`
 
 For a gateway install, put these in `~/.openclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-openclaw-load-environment-variables).
 
@@ -187,6 +189,12 @@ When you choose Firecrawl in onboarding or `openclaw configure --section web`, O
     entries: {
       tavily: {
         enabled: true,
+        config: {
+          webSearch: {
+            apiKey: "tvly-...", // optional if TAVILY_API_KEY is set
+            baseUrl: "https://api.tavily.com",
+          },
+        },
       },
     },
   },
@@ -195,9 +203,6 @@ When you choose Firecrawl in onboarding or `openclaw configure --section web`, O
       search: {
         enabled: true,
         provider: "tavily",
-        tavily: {
-          apiKey: "tvly-...", // optional if TAVILY_API_KEY is set
-        },
       },
     },
   },

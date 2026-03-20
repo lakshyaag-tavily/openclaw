@@ -108,7 +108,7 @@ export async function runTavilySearch(
   const apiKey = resolveTavilyApiKey(params.cfg);
   if (!apiKey) {
     throw new Error(
-      "web_search (tavily) needs a Tavily API key. Set TAVILY_API_KEY in the Gateway environment, or configure tools.web.search.tavily.apiKey.",
+      "web_search (tavily) needs a Tavily API key. Set TAVILY_API_KEY in the Gateway environment, or configure plugins.entries.tavily.config.webSearch.apiKey.",
     );
   }
   const count =
@@ -199,7 +199,7 @@ export async function runTavilyExtract(
   const apiKey = resolveTavilyApiKey(params.cfg);
   if (!apiKey) {
     throw new Error(
-      "tavily_extract needs a Tavily API key. Set TAVILY_API_KEY in the Gateway environment, or configure tools.web.search.tavily.apiKey.",
+      "tavily_extract needs a Tavily API key. Set TAVILY_API_KEY in the Gateway environment, or configure plugins.entries.tavily.config.webSearch.apiKey.",
     );
   }
   const baseUrl = resolveTavilyBaseUrl(params.cfg);
