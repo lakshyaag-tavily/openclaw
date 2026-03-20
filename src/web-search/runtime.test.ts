@@ -4,6 +4,12 @@ import { createEmptyPluginRegistry } from "../plugins/registry.js";
 import { setActivePluginRegistry } from "../plugins/runtime.js";
 import { runWebSearch } from "./runtime.js";
 
+type TestPluginWebSearchConfig = {
+  webSearch?: {
+    apiKey?: unknown;
+  };
+};
+
 describe("web search runtime", () => {
   afterEach(() => {
     setActivePluginRegistry(createEmptyPluginRegistry());
@@ -62,8 +68,12 @@ describe("web search runtime", () => {
         autoDetectOrder: 1,
         getCredentialValue: () => undefined,
         setCredentialValue: () => {},
-        getConfiguredCredentialValue: (config) =>
-          config?.plugins?.entries?.["custom-search"]?.config?.webSearch?.apiKey,
+        getConfiguredCredentialValue: (config) => {
+          const pluginConfig = config?.plugins?.entries?.["custom-search"]?.config as
+            | TestPluginWebSearchConfig
+            | undefined;
+          return pluginConfig?.webSearch?.apiKey;
+        },
         setConfiguredCredentialValue: (configTarget, value) => {
           configTarget.plugins = {
             ...configTarget.plugins,
